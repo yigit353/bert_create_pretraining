@@ -4,10 +4,20 @@
 
 The crate provides the port of the original BERT create_pretraining_data.py script from the [Google BERT repository](https://github.com/google-research/bert).
 
-## Usage
+# Installation
+
+## Cargo
 
 ```bash
-find "${DATA_DIR}" -name "*.txt" | xargs -I% -P $NUM_PROC -n 1 \
+$ cargo install bert_create_pretraining
+```
+
+# Usage
+
+You can use the `bert_create_pretraining` binary to create the pretraining data for BERT in parallel. The binary takes the following arguments:
+
+```bash
+$ find "${DATA_DIR}" -name "*.txt" | xargs -I% -P $NUM_PROC -n 1 \
 basename % | xargs -I% -P ${NUM_PROC} -n 1 \
   "${TARGET_DIR}/bert_create_pretraining" \
   --input-file="${DATA_DIR}/%" \
@@ -18,6 +28,12 @@ basename % | xargs -I% -P ${NUM_PROC} -n 1 \
   --masked-lm-prob=0.15 \
   --random-seed=12345 \
   --dupe-factor=5
+```
+
+You can check the full list of options with the following command:
+
+```bash
+$ bert_create_pretraining --help
 ```
 
 ## License
