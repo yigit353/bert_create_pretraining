@@ -9,7 +9,7 @@ The crate provides the port of the original BERT create_pretraining_data.py scri
 ```bash
 find "${DATA_DIR}" -name "*.txt" | xargs -I% -P $NUM_PROC -n 1 \
 basename % | xargs -I% -P ${NUM_PROC} -n 1 \
-  "${TARGET_DIR}/bert2d_create_pretraining" \
+  "${TARGET_DIR}/bert_create_pretraining" \
   --input-file="${DATA_DIR}/%" \
   --output-file="${OUTPUT_DIR}/%.tfrecord" \
   --vocab-file="${VOCAB_DIR}/vocab.txt" \

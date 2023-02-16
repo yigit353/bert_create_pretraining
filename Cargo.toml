@@ -1,6 +1,6 @@
 [package]
 name = "bert_create_pretraining"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Yiğit Bekir Kaya <kayayig@itu.edu.tr>"]
 description = "This crate is a Rust port of Google's BERT create pretraining data."
