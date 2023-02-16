@@ -40,19 +40,6 @@ struct Args {
     #[arg(long, default_value = "128")]
     max_seq_length: u16,
 
-    /// Maximum number of intermediate subword positions
-    /// (i.e. not including root and last subword) in a word.
-    #[arg(long, default_value = "1")]
-    max_intermediate_subword_positions_per_word: u16,
-
-    /// How subword embedding is ordered after the root subword.
-    #[arg(long, default_value = "ending_first")]
-    subword_embedding_order: String,
-
-    /// If intermediate subword count is more than max, distribute it uniformly
-    #[arg(long, default_value = "uniform")]
-    intermediate_subword_distribution_strategy: String,
-
     /// Maximum number of masked LM predictions per sequence.
     #[arg(long, default_value = "20")]
     max_predictions_per_seq: u16,
@@ -85,11 +72,6 @@ fn main() -> Result<()> {
     let do_lower_case = args.do_lower_case;
     let do_whole_word_masking = args.do_whole_word_masking;
     let max_seq_length = args.max_seq_length;
-    let max_intermediate_subword_positions_per_word =
-        args.max_intermediate_subword_positions_per_word;
-    let subword_embedding_order = args.subword_embedding_order;
-    let intermediate_subword_distribution_strategy =
-        args.intermediate_subword_distribution_strategy;
     let max_predictions_per_seq = args.max_predictions_per_seq;
     let random_seed = args.random_seed;
     let dupe_factor = args.dupe_factor;
@@ -103,15 +85,6 @@ fn main() -> Result<()> {
     println!("Do lower case: {}", &do_lower_case);
     println!("Do whole word masking: {}", &do_whole_word_masking);
     println!("Max sequence length: {}", &max_seq_length);
-    println!(
-        "Max intermediate subword positions per word: {}",
-        &max_intermediate_subword_positions_per_word
-    );
-    println!("Subword embedding order: {}", &subword_embedding_order);
-    println!(
-        "Intermediate subword distribution strategy: {}",
-        &intermediate_subword_distribution_strategy
-    );
     println!("Max predictions per sequence: {}", &max_predictions_per_seq);
     println!("Random seed: {}", &random_seed);
     println!("Dupe factor: {}", &dupe_factor);
